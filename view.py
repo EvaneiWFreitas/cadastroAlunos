@@ -23,7 +23,7 @@ except sqlite3.Error as e:
 # FUNÇÕES -------------CURSOS------------------------------------------
 # Criando a Função criar cursos(CREATE - INSERIR)
 
-def criar_cursos(i):
+def criar_curso(i):
 	with con:
 		cur = con.cursor()
 		query = "INSERT INTO cursos(nome, duracao, preco) VALUES (?,?,?)"
@@ -36,7 +36,7 @@ def criar_cursos(i):
 #Ver Todos os Cursos(READ - LER OU SELECIONAR TODOS OS CURSOS)
 #Criando uma Função para ver os cursos
 
-def ver_cursos():
+def ver_curso():
 	lista = []
 	with con:
 		cur = con.cursor()
@@ -55,7 +55,7 @@ def ver_cursos():
 #Atualizar  Curso(UPDATE - ATUALIZAR CURSO)
 # Criando a Função atualizar curso(UPDATE - ATUALIZAR)
 
-def atualizar_cursos(i):
+def atualizar_curso(i):
 	with con:
 		cur = con.cursor()
 		query = "UPDATE cursos SET nome=?, duracao=?, preco=? WHERE id=?"
@@ -89,7 +89,7 @@ def deletar_curso(i):
 # FUNÇÕES ---------------TURMAS------------------------------------------
 # Criando a Função criar turmas(CREATE - INSERIR)
 
-def criar_turmas(i):
+def criar_turma(i):
 	with con:
 		cur = con.cursor()
 			query = "INSERT INTO turmas(nome, curso_nome, data_inicio) VALUES (?,?,?)"
@@ -101,7 +101,7 @@ def criar_turmas(i):
 #Ver Todos as Turmas(READ - LER OU SELECIONAR TODAS AS TURMAS)
 # Criando a Função ver turmas(READ - LER OU SELECIONAR TODAS AS TURMAS)
 
-def ver_turmas():
+def ver_turma():
 	lista = []
 	with con:
 		cur = con.cursor()
@@ -119,7 +119,7 @@ def ver_turmas():
 #Atualizar Todos as Turmas(UPDATE - ATUALIZAR TODAS AS TURMAS)
 # Criando a Função atualizar turmas(UPDATE - ATUALIZAR)
 
-def atualizar_turmas(i):
+def atualizar_turma(i):
 	with con:
 		cur = con.cursor()
 		query = "UPDATE turmas SET nome=?, curso_nome=?, data_inicio=? WHERE id=?"
@@ -144,6 +144,66 @@ def deletar_turma(i):
 #************************************************************************
 #                               ALUNOS
 #************************************************************************
+
+# FUNÇÕES ---------------ALUNOS------------------------------------------
+# Criando a Função criar turmas(CREATE - INSERIR)
+
+def criar_aluno(i):
+	with con:
+		cur = con.cursor()
+				query = "INSERT INTO alunos(nome, email, telefone, sexo, imagem, data_nascimento, cpf, turma_nome) VALUES (?,?,?,?,?,?,?,?)"
+		cur.execute(query,i)
+
+
+#------------------------------------------------------------------------
+
+#Ver Todos os Alunos(READ - LER OU SELECIONAR TODAS OS ALUNOS)
+# Criando a Função ver alunos(READ - LER OU SELECIONAR TODOS OS ALUNOS)
+
+def ver_aluno():
+	lista = []
+	with con:
+		cur = con.cursor()
+		cur.execute('SELECT * FROM alunos')
+		linha = cur.fetchall()
+
+		for i in linha:
+			lista.append(i)
+
+	return lista
+
+
+#------------------------------------------------------------------------
+
+#Atualizar Todos os Alunos(UPDATE - ATUALIZAR TODOS OS ALUNOS)
+# Criando a Função atualizar alunos(UPDATE - ATUALIZAR)
+
+def atualizar_aluno(i):
+	with con:
+		cur = con.cursor()
+		query = "UPDATE alunos SET nome=?, email=?, telefone=?, sexo=?, imagem=?, data_nascimento=?, cpf=?, turma_nome=? WHERE id=?"
+		cur.execute(query,i)
+
+
+#------------------------------------------------------------------------
+
+#Deletar - Excluir  Aluno(EXCLUIR ALUNO)
+# Criando a Função Excluir(DELETE) 
+
+def deletar_aluno(i):
+	with con:
+		cur = con.cursor()
+		query = "DELETE FROM alunos WHERE id=?"
+		cur.execute(query,i)
+
+
+#------------------------------------------------------------------------
+
+
+#************************************************************************
+#                        
+#************************************************************************
+
 
 
 
