@@ -1,3 +1,10 @@
+"""
+CRUD é um acrônimo para Create (Criar), Read (Ler), Update (Atualizar) e Delete (Deletar),
+representando as quatro operações fundamentais para manipular dados em qualquer 
+sistema de software ou banco de dados
+
+"""
+
 #Importando SQLite
 import sqlite3 as lite
 
@@ -10,8 +17,8 @@ except sqlite3.Error as e:
 
 
 # Tabela de Cursos---------------------------------------------------
-
 # Criando a Função criar cursos(CREATE - INSERIR)
+
 def criar_cursos(i):
 	with con:
 		cur = con.cursor()
@@ -20,9 +27,11 @@ def criar_cursos(i):
 
 #criar_cursos(['Python','Duas Semanas',50])
 
+#------------------------------------------------------------------------
 
 #Ver Todos os Cursos(READ - LER OU SELECIONAR TODOS OS CURSOS)
 #Criando uma Função para ver os cursos
+
 def ver_cursos():
 	lista = []
 	with con:
@@ -36,6 +45,22 @@ def ver_cursos():
 	return lista
 
 print(ver_cursos())
+
+#------------------------------------------------------------------------
+
+#Atualizar  Curso(UPDATE - ATUALIZAR CURSO)
+# Criando a Função atualizar curso(UPDATE - ATUALIZAR)
+
+def atualizar_cursos(i):
+	with con:
+		cur = con.cursor()
+		query = "UPDATE cursos SET nome=?, duracao=?, preco=? WHERE id=?"
+		cur.execute(query,i)
+
+
+l = ['Básico de Python', 'Quatro Semanas', 120.0, 1]
+#atualizar_cursos(l)
+
 
 
 
