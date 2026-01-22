@@ -8,6 +8,7 @@ try:
 except sqlite3.Error as e:
     print("Erro ao tentar conectar com o banco de dados:", e)
     
+#------------------------------------------------------------------
     
 #Criando Tabela de Cursos
 try:
@@ -25,6 +26,7 @@ try:
 except sqlite3.Error as e:
     print("Erro ao criar a tabela cursos:", e)
 
+#------------------------------------------------------------------
 
 #Criando Tabela de Turmas
 try:
@@ -43,6 +45,7 @@ try:
 except sqlite3.Error as e:
     print("Erro ao criar a tabela turmas:", e)
 
+#------------------------------------------------------------------
 
 #Criando Tabela de Alunos
 try:
